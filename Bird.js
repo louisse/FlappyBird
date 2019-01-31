@@ -5,7 +5,8 @@ class Bird {
         this.yAcc = 0;
         this.ySpeed = 0;
         this.size = 20;
-        this.flap = false;
+        this.maxSpeed = 5;
+        this.f = false;
     }
 
     show() {
@@ -28,25 +29,20 @@ class Bird {
     }
 
     update() {
-        this.doFlap();
+        this.yAcc -= G;
+        if (this.f === true) {
+            this.yAcc = 5;
+        }
         this.ySpeed += this.yAcc;
-        this.ySpeed = constrain(this.ySpeed, -5, 5);
+        this.ySpeed = constrain(this.ySpeed, -this.maxSpeed, this.maxSpeed);
         this.y -= this.ySpeed;
         if (this.y >= height - groundHeight) {
-            noLoop();
+            reset();
         }
-        this.flap = false;
+        this.f = false;
     }
 
-    doFlap() {
-        if (this.flap === false) {
-            this.yAcc -= G;
-            return;
-        }
-        this.yAcc = 5;
-    }
-
-    setFlap() {
-        this.flap = true;
+    flap() {
+        this.f = true;
     }
 }

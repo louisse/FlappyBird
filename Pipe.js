@@ -32,7 +32,7 @@ class Pipe {
         let r = b.size / 2;
         if (this.x < b.x + r && this.x + this.w > b.x - r) {
             if (this.y < b.y + r || this.y - this.h > b.y - r) {
-                noLoop();
+                reset();
             }
         }
     }

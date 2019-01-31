@@ -5,6 +5,10 @@ let groundHeight = 25;
 
 function setup() {
     createCanvas(600, 400);
+    reset();
+}
+
+function reset() {
     b = new Bird(height / 2);
     pipes = new Pipes();
 }
@@ -27,6 +31,6 @@ function drawStage() {
 function keyPressed() {
     let SPACE_BAR = 32;
     if (keyCode === SPACE_BAR) {
-        b.setFlap();
+        b.flap(10);
     }
 }
